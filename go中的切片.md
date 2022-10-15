@@ -313,7 +313,7 @@ s5 is nil: false, len: 2, cap: 4, v: [0 0]
 
 s5 与前面几个切片最大的切片时创建了一个底层数组，对应的内存布局如下：
 
-![slice-make-len&cap-indiff.png](http://go-media.knowledge.ituknown.cn/slice/slice-make-len&cap-indiff.png)
+![slice-make-lencap-indiff.png](http://go-media.knowledge.ituknown.cn/slice/slice-make-lencap-indiff.png)
 
 到这里，相信对切片已经有了基本的认识。下面再从结构体角度来理解使用 make 关键字创建切片的含义：
 
@@ -406,7 +406,7 @@ for i = 0; i < 10; i++ {
 
 我使用了颜色标记了每次扩容的实际以及数据范围，如下图：
 
-![slice-len&cap-grow.png](http://go-media.knowledge.ituknown.cn/slice/slice-len&cap-grow.png)
+![slice-lencap-grow.png](http://go-media.knowledge.ituknown.cn/slice/slice-lencap-grow.png)
 
 其他就不多说了，基本上看到这个图就什么都明白了~
 
