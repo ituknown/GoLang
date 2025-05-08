@@ -251,11 +251,11 @@ type slice struct {
 
 我们可以使用下面这个图理解 slice：
 
-![slice-struct.png](https://ituknown.cn/go-media/slice/slice-struct.png)
+![slice-struct.png](https://ituknown.org/go-media/slice/slice-struct.png)
 
 如果你仔细观察这个 slice 结构体的话你可能会想到，如果 array 是 nil 怎么办？即：
 
-![slice-array-nil%20.png](https://ituknown.cn/go-media/slice/slice-array-nil%20.png)
+![slice-array-nil%20.png](https://ituknown.org/go-media/slice/slice-array-nil%20.png)
 
 其实，这个确实是存在的，这个就与 slice 的声明有关了。声明 slice 主要有如下四种形式（Type 是数据类型，如 int）：
 
@@ -295,7 +295,7 @@ s4 is nil: false, len: 0, cap: 0
 
 这三种声明方式对应的就是没有底层数组的形式（ptr 为 nil）：
 
-![slice-array-nil%20.png](https://ituknown.cn/go-media/slice/slice-array-nil%20.png)
+![slice-array-nil%20.png](https://ituknown.org/go-media/slice/slice-array-nil%20.png)
 
 如果我们指定创建的切片的底层数组长度大于 0 时，就会得到不一样的输出结果：
 
@@ -313,7 +313,7 @@ s5 is nil: false, len: 2, cap: 4, v: [0 0]
 
 s5 与前面几个切片最大的切片时创建了一个底层数组，对应的内存布局如下：
 
-![slice-make-lencap-indiff.png](https://ituknown.cn/go-media/slice/slice-make-lencap-indiff.png)
+![slice-make-lencap-indiff.png](https://ituknown.org/go-media/slice/slice-make-lencap-indiff.png)
 
 到这里，相信对切片已经有了基本的认识。下面再从结构体角度来理解使用 make 关键字创建切片的含义：
 
@@ -406,7 +406,7 @@ for i = 0; i < 10; i++ {
 
 我使用了颜色标记了每次扩容的实际以及数据范围，如下图：
 
-![slice-lencap-grow.png](https://ituknown.cn/go-media/slice/slice-lencap-grow.png)
+![slice-lencap-grow.png](https://ituknown.org/go-media/slice/slice-lencap-grow.png)
 
 其他就不多说了，基本上看到这个图就什么都明白了~
 
