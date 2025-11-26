@@ -4,8 +4,8 @@
 
 数组这种数据结构特点特别鲜明：
 
-- “固定大小且不可变”
-- “是内存中连续的一块区域”
+* “固定大小且不可变”
+* “是内存中连续的一块区域”
 
 在 Go 中声明一个数组变量与其他编程语言如出一辙。比如声明一个 int 类型，长度为 4 的数组：
 
@@ -84,21 +84,21 @@ i5[2] addr: 0xc00012e022
 i5[3] addr: 0xc00012e023
 ```
 
-注意看，i5[0] 的内存地址是 `0xc00012e020`，而 i5[1]、i5[2] 和 i5[3] 的内存地址也是以次递增，也印证了数组是内存中连续的一块空间。
+注意看，i5[0] 的内存地址是 `0xc00012e020` ，而 i5[1]、i5[2] 和 i5[3] 的内存地址也是以次递增，也印证了数组是内存中连续的一块空间。
 
 再来看下 i5 和 i5[0] 的内存地址，会发现他们是相等的，这也说明了数组的另一个特点：数组的内存地址就是首元素的内存地址。
 
 现在我们可以重新理解数组：**内存中连续的一块区域，数组的地址就是首元素的内存地址。** 而知道这点我们就能够理解根据下标获取值得原理了。
 
-想一下，我们是如何获取数组下标的元素值得？是不是指定下标就好了（比如 `i5[1]`），感觉好简单是不是？
+想一下，我们是如何获取数组下标的元素值得？是不是指定下标就好了（比如 `i5[1]` ），感觉好简单是不是？
 
 那为什么根据下标就能获取元素值了呢？这还是要归结于数组是内存中连续空间的内存结构，所以在底层上它还是根据内存的加减来计算下标值。
 
-还是以 i5 为例，他的第一个元素内存地址为 `0xc00012e020`，第二个元素内存地址为 `0xc00012e021`。以此类推，很明显就能看出来内存地址在 “增加”。
+还是以 i5 为例，他的第一个元素内存地址为 `0xc00012e020` ，第二个元素内存地址为 `0xc00012e021` 。以此类推，很明显就能看出来内存地址在 “增加”。
 
 而每次应该 “增加” 多少呢？这个又与数据类型的宽度有关了。在计算机中，所有的数据虽然都是以二进制存储，但是最小的存储单位却是 “字节”，而一字节就是8位。
 
-在内存中也是如此，每次增加1个地址空间，其实就是增加8位（即1比特）。比如由 `0xc00012e020` 增加到 `0xc00012e021`，其实就是增加8位（1字节）。
+在内存中也是如此，每次增加1个地址空间，其实就是增加8位（即1比特）。比如由 `0xc00012e020` 增加到 `0xc00012e021` ，其实就是增加8位（1字节）。
 
 而 int8 这种数据类型就是字面上的意思，占用8位空间。因此你会看到在内存地址中每次是增加1个字节单位。如果你将 int8 换成 int32，那么他的每个元素在内存地址上每次就是增加4个字节单位，输出结果就变成下面的样子了：
 
@@ -251,11 +251,11 @@ type slice struct {
 
 我们可以使用下面这个图理解 slice：
 
-![slice-struct.png](https://ituknown.org/go-media/slice/slice-struct.png)
+![slice-struct.png](https://media.ituknown.org/go-media/slice/slice-struct.png)
 
 如果你仔细观察这个 slice 结构体的话你可能会想到，如果 array 是 nil 怎么办？即：
 
-![slice-array-nil%20.png](https://ituknown.org/go-media/slice/slice-array-nil%20.png)
+![slice-array-nil%20.png](https://media.ituknown.org/go-media/slice/slice-array-nil%20.png)
 
 其实，这个确实是存在的，这个就与 slice 的声明有关了。声明 slice 主要有如下四种形式（Type 是数据类型，如 int）：
 
@@ -295,7 +295,7 @@ s4 is nil: false, len: 0, cap: 0
 
 这三种声明方式对应的就是没有底层数组的形式（ptr 为 nil）：
 
-![slice-array-nil%20.png](https://ituknown.org/go-media/slice/slice-array-nil%20.png)
+![slice-array-nil%20.png](https://media.ituknown.org/go-media/slice/slice-array-nil%20.png)
 
 如果我们指定创建的切片的底层数组长度大于 0 时，就会得到不一样的输出结果：
 
@@ -313,11 +313,11 @@ s5 is nil: false, len: 2, cap: 4, v: [0 0]
 
 s5 与前面几个切片最大的切片时创建了一个底层数组，对应的内存布局如下：
 
-![slice-make-lencap-indiff.png](https://ituknown.org/go-media/slice/slice-make-lencap-indiff.png)
+![slice-make-lencap-indiff.png](https://media.ituknown.org/go-media/slice/slice-make-lencap-indiff.png)
 
 到这里，相信对切片已经有了基本的认识。下面再从结构体角度来理解使用 make 关键字创建切片的含义：
 
-- `make([]Type, 10)` 等价于：
+* `make([]Type, 10)` 等价于：
 
 ```go
 var s = slice{
@@ -327,7 +327,7 @@ var s = slice{
 }
 ```
 
-- `make([]Type, 4, 10)` 等价于：
+* `make([]Type, 4, 10)` 等价于：
 
 ```go
 var s = slice{
@@ -337,7 +337,7 @@ var s = slice{
 }
 ```
 
-- `make([]Type, 0)`、`[]Type`、`[]Type{}` 等价于：
+* `make([]Type, 0)`、`[]Type`、`[]Type{}` 等价于：
 
 ```go
 var s = slice{
@@ -355,7 +355,7 @@ var s = slice{
 
 也就是说切片的扩容其实就是初始化新的 slice 结构体，并将老结构体中的数据拷贝过去。对，仅仅如此~
 
-而切片扩容的临界点就是 `len == cap`。在实际工作中你可能经常注意到下面这种写法：
+而切片扩容的临界点就是 `len == cap` 。在实际工作中你可能经常注意到下面这种写法：
 
 ```go
 var i1 []int
@@ -406,7 +406,7 @@ for i = 0; i < 10; i++ {
 
 我使用了颜色标记了每次扩容的实际以及数据范围，如下图：
 
-![slice-lencap-grow.png](https://ituknown.org/go-media/slice/slice-lencap-grow.png)
+![slice-lencap-grow.png](https://media.ituknown.org/go-media/slice/slice-lencap-grow.png)
 
 其他就不多说了，基本上看到这个图就什么都明白了~
 
@@ -434,7 +434,7 @@ i2 is nil: false, adr: 0x119f310, len: 0, cap: 0
 i3 is nil: false, adr: 0x119f310, len: 0, cap: 0
 ```
 
-注意看，`i1` 是一个 nil 切片，并且内存地址是零值（0x0）。而 i2 和 i3 虽然 cap 都是 0，但是却有具体的内存地址。实际上，按照 i1 方式声明切片的就是 nil 切片，而 i2 和 i3 则是空切片，。
+注意看， `i1` 是一个 nil 切片，并且内存地址是零值（0x0）。而 i2 和 i3 虽然 cap 都是 0，但是却有具体的内存地址。实际上，按照 i1 方式声明切片的就是 nil 切片，而 i2 和 i3 则是空切片，。
 
 我们可以使用下面的代码来理解 i1、i2 和 i3：
 
